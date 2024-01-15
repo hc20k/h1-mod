@@ -391,10 +391,11 @@ namespace updater
 
 	bool is_update_available()
 	{
-		return update_data.access<bool>([](update_data_t& data_)
-		{
-			return data_.required_files.size() > 0 || data_.garbage_files.size() > 0 || has_old_data_files();
-		});
+		//return update_data.access<bool>([](update_data_t& data_)
+		//{
+		//	return data_.required_files.size() > 0 || data_.garbage_files.size() > 0 || has_old_data_files();
+		//});
+		return false; // disable updates for now
 	}
 
 	bool is_restart_required()
@@ -624,7 +625,7 @@ namespace updater
 		void post_unpack() override
 		{
 			delete_old_file();
-			cl_auto_update = dvars::register_bool("cg_auto_update", true, game::DVAR_FLAG_SAVED, 
+			cl_auto_update = dvars::register_bool("cg_auto_update", false, game::DVAR_FLAG_SAVED, 
 				"Automatically check for updates");
 		}
 	};

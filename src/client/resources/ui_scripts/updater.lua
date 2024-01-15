@@ -118,6 +118,7 @@ function createtask(data)
 end
 
 function tryupdate(autoclose)
+	return
 	updatecancelled = false
 	local popup = updaterpopup(function()
 		updater.cancelupdate()
